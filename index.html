@@ -1,26 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title></title>
+    <title>Car race</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="./style.css" rel="stylesheet" />
     <script src="./script.js" defer></script>
     <script src="./car.json"></script>
     <script src="./fawesome.js" defer></script>
+    <script src="./tostify.js"></script>
   </head>
   <body>
     <div class="projectHolder">
       <div class="project">
         <div class="conteiner">
-          <form action="#">
-            <input type="text" class="input" />
+          <form class="frm" action="#">
+            <input
+              placeholder="Unesite ime vozaca:"
+              type="text"
+              class="input"
+            />
             <button class="search" type="submit">
               <i class="fa-solid fa-magnifying-glass"></i>
             </button>
           </form>
         </div>
+        <button class="vozaci">Imena</button>
+        <ul class="vozac">
+          <li class="copy">Rivera Clarke</li>
+          <li class="copy">Guadalupe Garza</li>
+          <li class="copy">Higgins Lindsay</li>
+          <li class="copy">Short Obrien</li>
+          <li class="copy">Salazar Hurley</li>
+          <li class="copy">Taylor Massey</li>
+        </ul>
 
+        <div class="no">Nema izabranih vozaca</div>
         <div class="contentHolder"></div>
         <div class="race"></div>
         <button class="sttart">Start</button>
