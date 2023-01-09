@@ -66,7 +66,7 @@ form {
   font-size: 15px;
   display: none;
   margin-top: 15px;
-  margin-left: -38px;
+  margin-left: -40px;
   justify-content: flex-start;
   flex-direction: column;
   gap: 15px;
@@ -74,7 +74,8 @@ form {
 li:hover {
   color: gray;
   cursor: pointer;
-  transition: cubic-bezier(0.5);
+  font-size: 15;
+  transition: cubic-bezier(1s);
 }
 .car {
   transform-style: preserve-3d;
@@ -91,7 +92,7 @@ li:hover {
 .car:hover {
   transform: rotateX(180deg);
 }
-.no {
+.listaVozaca {
   display: flex;
   justify-content: center;
   margin-top: 16rem;
