@@ -1,12 +1,13 @@
-let niz = [];
-
 class filterInput {
   constructor(input, dataContainer) {
     this.input = input;
     this.dataContainer = dataContainer;
+    this.niz = [];
     this.nameRace = document.querySelector(".vozaci");
     this.input.addEventListener("input", this.filterData.bind(this));
-    this.init();
+
+    this.validate = new Validate(input);
+    this.nameRacea = new nameRacea(nameRacee);
   }
 
   filterData() {
@@ -24,7 +25,7 @@ class filterInput {
           item.name.toLowerCase().includes(inputText)
         );
 
-        const itemsHTML = filteredItems.map((item) => {
+        filteredItems.map((item) => {
           const domElement = document.createElement("div");
           domElement.classList.add("car");
 
@@ -100,7 +101,6 @@ class filterInput {
             }, 500);
 
             let brojac = 0;
-
             button.addEventListener("click", () => {
               this.nameRace.disabled = "true";
               removemvEl.style.display = "none";
@@ -111,7 +111,7 @@ class filterInput {
               const speed = item.brzina;
               const targetDistance = cars.offsetWidth - 158;
               let startTime;
-
+              brojac++;
               const moveRight = (timestamp) => {
                 if (!startTime) startTime = timestamp;
                 const progress = timestamp - startTime;
@@ -119,38 +119,46 @@ class filterInput {
                 carImg.style.left = `${distance}px`;
 
                 if (distance >= targetDistance) {
-                  niz.push(item.brzina);
-                  const max = Math.max(...niz);
-                  const min = Math.min(...niz);
+                  button.style.visibility = "visible";
+                  button.innerHTML = "Nova trka";
 
-                  for (let i = 0; i < niz.length; i++) {
-                    if (niz[i] === max) {
+                  this.niz.push(item.brzina);
+                  const max = Math.max(...this.niz);
+                  const min = Math.min(...this.niz);
+
+                  for (let i = 0; i < this.niz.length; i++) {
+                    if (this.niz[i] === max) {
                       carImg.classList.add("first");
-                    } else if (niz[i] === min) {
+                    } else if (this.niz[i] === min) {
                       carImg.classList.add("second");
                     } else {
                       carImg.classList.add("third");
                     }
                   }
                 }
+                if (brojac === 2) {
+                  location.reload();
+                  contHolder.style.display = "none";
+                }
 
                 if (distance < targetDistance) {
                   requestAnimationFrame(moveRight);
+                  button.style.visibility = "hidden";
                 }
               };
               requestAnimationFrame(moveRight);
-              brojac++;
-              button.textContent = "Nova trka";
-              if (brojac > 1) {
-                button.textContent = "Nova trka";
-                location.reload();
-              }
             });
           });
         });
       });
   }
+}
 
+class Validate {
+  constructor(input) {
+    this.input = input;
+    this.init();
+  }
   validateInput(inputStr) {
     const regex = /^[a-zA-Z\s]+$/;
     return regex.test(inputStr);
@@ -177,7 +185,7 @@ class filterInput {
   }
 }
 
-class nameRace {
+class nameRacea {
   constructor(element) {
     this.element = element;
     this.namec = document.querySelector(".vozac");
@@ -222,5 +230,5 @@ const input = document.querySelector(".input");
 const dataContainer = document.querySelector(".contentHolder");
 const nameRacee = document.querySelector(".vozaci");
 const namec = document.querySelector(".vozac");
-const inputValidator = new filterInput(input, dataContainer);
-const nameRaceInstance = new nameRace(nameRacee);
+
+const feilterInput = new filterInput(input, dataContainer);
