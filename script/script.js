@@ -18,7 +18,7 @@ class filterInput {
     let listaVozaca = document.querySelector(".listaVozaca");
     listaVozaca.style.display = "none";
 
-    fetch("car.json")
+    fetch("./json/car.json")
       .then((response) => response.json())
       .then((data) => {
         const filteredItems = data.filter((item) =>
